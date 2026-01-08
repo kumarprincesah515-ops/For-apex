@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Apeksha</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:radial-gradient(circle at top,#1a1a1a,#000);
+  color:#eaeaea;
+  text-align:center;
+}
+
+/* PASSWORD SCREEN */
+#lockScreen{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+input{
+  padding:14px;
+  border-radius:30px;
+  border:none;
+  width:220px;
+  text-align:center;
+  font-size:15px;
+  outline:none;
+}
+
+button{
+  margin-top:18px;
+  padding:13px 34px;
+  border-radius:40px;
+  border:none;
+  background:linear-gradient(135deg,#b5173e,#7b102a);
+  color:#fff;
+  font-size:15px;
+  cursor:pointer;
+}
+
+button:hover{opacity:0.9;}
+
+#error{
+  color:#ff6b6b;
+  margin-top:10px;
+  font-size:14px;
+}
+
+/* MAIN SITE */
+#content{display:none;}
+
+section{padding:70px 22px;}
+
+h1,h2{
+  font-family:'Playfair Display',serif;
+  color:#f5c2d1;
+}
+
+h1{font-size:30px;}
+h2{font-size:22px;margin-bottom:14px;}
+
+p{
+  font-size:15.5px;
+  line-height:1.85;
+  max-width:720px;
+  margin:auto;
+  color:#ddd;
+}
+
+.glass{
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(14px);
+  border-radius:22px;
+  padding:34px 26px;
+  max-width:820px;
+  margin:24px auto;
+  box-shadow:0 25px 40px rgba(0,0,0,0.5);
+}
+
+.heart{
+  font-size:38px;
+  animation:pulse 1.6s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1);opacity:.8;}
+  50%{transform:scale(1.25);opacity:1;}
+  100%{transform:scale(1);opacity:.8;}
+}
+
+img{
+  width:100%;
+  max-width:230px;
+  border-radius:16px;
+  margin:10px;
+  box-shadow:0 12px 25px rgba(0,0,0,.6);
+}
+
+footer{
+  font-size:13px;
+  color:#aaa;
+  padding:30px 10px 40px;
+}
+
+#timer{
+  margin-top:12px;
+  font-size:14px;
+  color:#f1a7bc;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD -->
+<div id="lockScreen">
+  <div class="heart">🖤</div>
+  <h2>For Apeksha</h2>
+  <p>Enter the password</p>
+  <input type="password" id="pass" placeholder="••••••">
+  <button onclick="unlock()">Enter</button>
+  <div id="error"></div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div id="content">
+
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5c9f1e9c3c.mp3" type="audio/mpeg">
+</audio>
+
+<section>
+  <div class="heart">❤️</div>
+  <h1>Apeksha</h1>
+  <p>Bas kuch sachche words… bina pressure.</p>
+  <div id="timer"></div>
+</section>
+
+<section>
+  <div class="glass">
+    <h2>I’m Truly Sorry</h2>
+    <p>
+      Apeksha, mujhse galti hui — aur main maanta hoon.<br><br>
+      Shayad maine tumhe samajhne se pehle bol diya.<br><br>
+      Tumhari khamoshi ne mujhe ye sikha
+      ki pyaar sirf bolne se nahi,
+      samajhne se hota hai.<br><br>
+      Main perfect nahi hoon,
+      par tumhari respect
+      mere liye hamesha first rahi hai.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="glass">
+    <h2>Moments I Hold Close</h2>
+    <p>Kuch lamhe jo hamesha dil ke kareeb rahenge.</p>
+    <img src="photo1.jpg">
+    <img src="photo2.jpg">
+  </div>
+</section>
+
+<section>
+  <div class="glass">
+    <h2>No Expectations</h2>
+    <p>
+      Main yahin hoon, Apeksha.<br>
+      Bina zid. Bina pressure.<br><br>
+      Tum jo feel karti ho,
+      wo bilkul sahi hai.<br><br>
+      Bas itna yaad rakhna —
+      tumhari jagah meri life mein
+      hamesha special rahegi.
+    </p>
+  </div>
+</section>
+
+<footer>
+  Made with honesty, respect & care
+</footer>
+
+</div>
+
+<script>
+/* PASSWORD */
+function unlock(){
+  if(document.getElementById("pass").value==="apeksha"){
+    document.getElementById("lockScreen").style.display="none";
+    document.getElementById("content").style.display="block";
+  }else{
+    document.getElementById("error").innerText="Wrong password";
+  }
+}
+
+/* TIMER – CHANGE DATE */
+const startDate=new Date("2024-01-01"); // 👈 CHANGE THIS DATE
+setInterval(()=>{
+  const now=new Date();
+  let diff=now-startDate;
+  let days=Math.floor(diff/(1000*60*60*24));
+  let hours=Math.floor((diff/(1000*60*60))%24);
+  let mins=Math.floor((diff/(1000*60))%60);
+  document.getElementById("timer").innerText=
+  `Time since we met: ${days} days ${hours} hrs ${mins} mins`;
+},1000);
+</script>
+
+</body>
+</html>
